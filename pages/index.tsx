@@ -1,8 +1,13 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { NavBar } from '../components/common/navbar';
+import { Configuration, OpenAIApi } from 'openai';
+import { ChangeEvent, useState } from 'react';
 
 const Home: NextPage = () => {
+  const [ingredients, setIngredients] = useState<string>('');
+
+
   return (
     <div className='h-screen bg-primary-light'>
       <Head>
@@ -17,15 +22,14 @@ const Home: NextPage = () => {
         <h1 className='font-semibold text-primary-dark font-heading'>
           Hva har du i kjøleskapet?
         </h1>
-        <p className='text-sm font-roboto'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+
+        <input
+          className='p-2 text-sm border rounded-md outline-none border-primary-dark focus:ring-0 font-roboto'
+          value={ingredients}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setIngredients(e.target.value)
+          }
+        ></input>
       </main>
 
       <footer></footer>
